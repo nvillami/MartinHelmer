@@ -1,78 +1,145 @@
 <!DOCTYPE html>
-<html lang='en'>
-
-<head>
-    <base href="..">
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-    <link rel="stylesheet" type="text/css" media="all" href="assets/main.css"/>
-    <meta name="description" content="Conference Template">
-    <meta name="resource-type" content="document">
-    <meta name="distribution" content="global">
-    <meta name="KeyWords" content="Conference">
-    <title>Flyer | Conference Template</title>
-</head>
-
-<body>
-
-    <div class="banner">
-        <img src="assets/banner.jpg" alt="Conference Template Banner">
-        <div class="top-left">
-            <span class="title1">Conference</span><span class="title2">Template</span> <span class="year">2525</span>
-        </div>
-        <div class="bottom-right">
-            June 31, 2525 <br> University Name, and City Maybe
-        </div>
-    </div>
-
-    <table class="navigation">
-        <tr>
-            <td class="navigation">
-                <a title="Conference Home Page" href=".">Home</a>
-            </td>
-            <td class="navigation">
-                <a title="Register for the Conference" href="registration">Registration</a>
-            </td>
-            <td class="navigation">
-                <a title="Conference Program" href="program">Program</a> 
-            </td>
-            <td class="navigation">
-                <a title="Directions to the Conference" href="directions">Directions</a>
-            </td>
-            <td class="navigation">
-                <a class="current" title="Conference Flyer" href="flyer">Flyer</a>
-            </td>
-        </tr>
-    </table>
-
-    <br>
-
-    <p>
-        I got lazy on this page and didn&rsquo;t mock up any template flyers for this template website.
-        So these are the flyers that <a target="_blank" href="https://math.jonathanalcaraz.com/">Jonathan Alcaraz</a>
-        designed for <a target="_blank" href="http://math.ucr.edu/~mathconn/">MathConnections 2019</a>.
-        Click on the color or grayscale flyer below to download a pdf.
-    </p>
-
-    <table class="flyers">
-        <tr>
-            <td class="flyer">
-                <a href="assets/MathConnections-Flyer.pdf">
-                    <img src="assets/MathConnections-Flyer.png" alt="MathConnections Color Flyer" style="width:100%">
-                </a>
-            </td>
-            <td class="flyer">
-                <a href="assets/MathConnections-FlyerBW.pdf">
-                    <img src="assets/MathConnections-FlyerBW.png" alt="MathConnections BW Flyer" style="width:100%">
-                </a>
-            </td>
-        </tr>
-    </table>
-
-    <footer>
-        &copy; Conference Organizers
-        &nbsp;|&nbsp; Design by <a href="https://github.com/mikepierce">Mike Pierce</a>
-    </footer>
-
-</body>
-</html>
-
+<html lang="en">
+	
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				
+				<base href="../">
+					
+					<link rel="shortcut icon"
+						type="image/png"
+						href="assets/favicon.png">
+						
+						<link rel="stylesheet"
+							type="text/css"
+							media="all"
+							href="assets/main.css">
+							
+							<meta name="description"
+								content="Flyer for Computational Algebraic Geometry in Memory of Martin Helmer, 15–16 July 2027, Swansea University.">
+								
+								<title>Flyer | Computational Algebraic Geometry in Memory of Martin Helmer</title>
+								
+								<style>
+									/* One centred, responsive colour flyer */
+									.conference-flyer {
+									width: min(700px, 100%);
+									margin: 32px auto;
+									}
+									
+									.conference-flyer a {
+									display: block;
+									}
+									
+									.conference-flyer img {
+									display: block;
+									width: 100%;
+									height: auto;
+									}
+									
+									.conference-flyer figcaption {
+									margin-top: 16px;
+									text-align: center;
+									font-size: 1rem;
+									line-height: 1.5;
+									}
+								</style>
+							</head>
+							
+							<body>
+								
+								<div class="banner">
+									<div class="top-left">
+										<span class="title1">Computational</span>
+										<span class="title2">Algebraic Geometry</span>
+									</div>
+									
+									<div class="photo-banner">
+										<img
+											src="assets/MH.jpg"
+											alt="Martin Helmer overlooking a lake and landscape"
+											>
+											
+											<div class="memorial-text">
+												In Memory of Martin Helmer<br>
+													
+													<span class="conference-date">
+														July 15–16, 2027 · Swansea University, UK
+													</span>
+												</div>
+											</div>
+										</div>
+										
+										<table class="navigation">
+											<tr>
+												<td class="navigation">
+													<a title="Conference Home Page" href="./">
+														Home
+													</a>
+												</td>
+												
+												<td class="navigation">
+													<a title="Register for the Conference"
+														href="./#registration">
+														Registration
+													</a>
+												</td>
+												
+												<td class="navigation">
+													<a title="Talk Abstracts" href="abstracts/">
+														Abstracts
+													</a>
+												</td>
+												
+												<td class="navigation">
+													<a title="Conference Venue" href="./#venue">
+														Venue
+													</a>
+												</td>
+												
+												<td class="navigation">
+													<a class="current"
+														aria-current="page"
+														title="Conference Flyer"
+														href="flyer/">
+														Flyer
+													</a>
+												</td>
+											</tr>
+										</table>
+										
+										<main>
+											<h2>Conference Flyer</h2>
+											
+											<p>
+												Please free free to download print or distribute the flyer for the conference on 
+												<em>Computational Algebraic Geometry in Memory of
+													Martin Helmer</em>, taking place at Swansea University
+												on 15–16 July 2027.
+											</p>
+											
+											<figure class="conference-flyer">
+												<a href="assets/MartinHelmer-Flyer.pdf"
+													download
+													aria-label="Download the conference flyer as a PDF">
+													<img
+														src="assets/MartinHelmer-Flyer.png"
+														alt="Colour flyer for Computational Algebraic Geometry
+														in Memory of Martin Helmer, 15–16 July 2027,
+														Swansea University"
+														>
+													</a>
+													
+													<figcaption>
+														<a href="assets/MartinHelmer-Flyer.pdf" download>
+															Download the colour flyer (PDF)
+														</a>
+													</figcaption>
+												</figure>
+											</main>
+											
+										
+											
+										</body>
+									</html>
