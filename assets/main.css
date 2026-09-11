@@ -152,7 +152,7 @@ text-align: left;
 vertical-align: top;
 }
 
-/* Conference banner */
+/* Workshop banner */
 .banner {
 width: 100%;
 }
@@ -216,7 +216,7 @@ line-height: 1.3;
 text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.conference-date {
+.workshop-date {
 display: inline-block;
 margin-top: 0.6em;
 font-family: 'Roboto', sans-serif;
@@ -443,18 +443,18 @@ max-width: 100%;
 height: auto;
 }
 
-.conference-flyer {
+.workshop-flyer {
 width: min(700px, 100%);
 margin: 32px auto;
 }
 
-.conference-flyer img {
+.workshop-flyer img {
 display: block;
 width: 100%;
 height: auto;
 }
 
-.conference-flyer figcaption {
+.workshop-flyer figcaption {
 margin-top: 16px;
 text-align: center;
 }
@@ -545,7 +545,7 @@ width: calc(100% - 36px);
 font-size: clamp(1.3rem, 4.5vw, 1.8rem);
 }
 
-.conference-date {
+.workshop-date {
 font-size: 1rem;
 }
 
