@@ -1,0 +1,57 @@
+from pathlib import Path
+from reportlab.pdfgen import canvas
+from reportlab.lib.colors import HexColor, white
+from reportlab.lib.utils import ImageReader
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import Paragraph
+from reportlab.lib.styles import ParagraphStyle
+import fitz
+
+ROOT = Path(__file__).resolve().parent
+OUT = ROOT / "assets"
+OUT.mkdir(parents=True,exist_ok=True)
+import matplotlib
+FONT = str(
+    Path(matplotlib.get_data_path()) / "fonts" / "ttf"
+) + "/"
+pdfmetrics.registerFont(TTFont('Serif',FONT+'DejaVuSerif.ttf'))
+pdfmetrics.registerFont(TTFont('Sans',FONT+'DejaVuSans.ttf'))
+W,H=595.276,841.89
+c=canvas.Canvas(str(OUT/'MartinHelmer-Flyer.pdf'),pagesize=(W,H))
+c.setTitle('Computational Algebraic Geometry in Memory of Martin Helmer')
+c.setAuthor('Conference organisers')
+navy=HexColor('#243655'); burgundy=HexColor('#813c54')
+def text(x,y,s,size=12,font='Sans',color=navy):
+    c.setFillColor(color); c.setFont(font,size); c.drawString(x,y,s)
+def para(s,x,top,width,size=11,leading=16,color=navy):
+    p=Paragraph(s,ParagraphStyle('p',fontName='Sans',fontSize=size,leading=leading,textColor=color))
+    _,h=p.wrap(width,200); p.drawOn(c,x,top-h); return top-h
+text(36,797,'Computational',31,'Serif',burgundy)
+text(36,757,'Algebraic Geometry',31,'Serif')
+text(36,727,'In Memory of Martin Helmer',17,'Serif',burgundy)
+# Preserve the complete photograph, without cropping Martin.
+pw=W-72; ph=pw*2/3; py=356
+c.drawImage(str(ROOT / 'assets/MH.jpg'),36,py,pw,ph,mask='auto')
+text(36,325,'15-16 July 2027',23,'Serif',burgundy)
+text(36,301,'Swansea University, UK',15)
+text(36,280,'Computational Foundry, Room 002 · Bay Campus',10.5)
+para('A two-day meeting bringing together friends, colleagues and collaborators to celebrate Martin’s life and mathematical contributions, and to share mathematics and memories.',36,258,W-72,10.5,15)
+text(36,194,'REGISTRATION',9,'Sans',burgundy)
+text(36,176,'Nelly Villamizar · n.y.villamizar@swansea.ac.uk',11)
+c.linkURL('mailto:n.y.villamizar@swansea.ac.uk',(36,172,470,189),relative=0)
+text(36,151,'Preceding SIAM AG27 · 19-23 July 2027 · Osnabrück, Germany',9)
+c.linkURL('https://www.siam.org/conferences-events/siam-conferences/ag27',(36,147,W-36,162),relative=0)
+c.setStrokeColor(HexColor('#d6dbe2')); c.line(36,132,W-36,132)
+text(36,113,'SUPPORTED BY',8,'Sans',burgundy)
+def logo(name,x,y,w,h):
+    im=ImageReader(str(ROOT/'upload'/name)); iw,ih=im.getSize(); r=min(w/iw,h/ih)
+    c.drawImage(im,x+(w-iw*r)/2,y+(h-ih*r)/2,iw*r,ih*r,mask='auto')
+logo('assets/MH.jpg',36,38,155,60)
+logo('assets/lms.png',215,38,185,60)
+logo('assets/ini.png',440,38,110,60)
+c.showPage(); c.save()
+doc=fitz.open(OUT/'MartinHelmer-Flyer.pdf')
+assert len(doc)==1
+doc[0].get_pixmap(matrix=fitz.Matrix(2,2),alpha=False).save(OUT/'MartinHelmer-Flyer.png')
+print(doc[0].get_text())

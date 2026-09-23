@@ -631,6 +631,15 @@ width: min(340px, 100%);
 }
 }
 
+.network-note {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #526575;
+}
+
 /* Extra-small screens */
 @media only screen and (max-width: 380px) {
 .programme-day .talk,

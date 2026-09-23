@@ -17,7 +17,7 @@ parser.add_argument('--assets', type=Path, default=ROOT / 'assets')
 parser.add_argument('--output', type=Path, default=ROOT / 'assets')
 args = parser.parse_args()
 ASSETS, OUT = args.assets, args.output
-for name in ['MH.jpg', 'swansea.png', 'lms.png', 'ini.png']:
+for name in ['MH.jpg', 'swansea.png', 'HIMR.png', 'ini.png']:
     if not (ASSETS / name).is_file():
         raise FileNotFoundError(f'Missing image: {ASSETS / name}')
 OUT.mkdir(parents=True, exist_ok=True)
@@ -46,11 +46,34 @@ text(36, 797, 'Computational', 30, 'Serif')
 text(36, 757, 'Algebraic Geometry', 30, 'Serif')
 text(36, 727, 'In Memory of Martin Helmer', 17, 'Serif', blue)
 
-# Smaller full photograph: preserve its proportions and keep Martin visible.
+network_label = 'A meeting of the Applied Algebra and Geometry Research Network'
+text(36, 704, network_label, 9.5, color=blue)
+c.linkURL(
+    'https://sites.google.com/view/appliedalgebraandgeometry',
+    (
+        36,
+        701,
+        36 + pdfmetrics.stringWidth(network_label, 'Sans', 9.5),
+        716,
+    ),
+    relative=0,
+)
+
+# Fit the complete photograph within the available space.
 im = ImageReader(str(ASSETS / 'MH.jpg'))
 iw, ih = im.getSize()
-photo_h = 258
-photo_w = photo_h * iw / ih
+scale = min((W - 72) / iw, 238 / ih)
+photo_w = iw * scale
+photo_h = ih * scale
+
+c.drawImage(
+    im,
+    (W - photo_w) / 2,
+    447,
+    photo_w,
+    photo_h,
+    mask='auto',
+)
 c.drawImage(im, (W-photo_w)/2, 447, photo_w, photo_h, mask='auto')
 
 text(36, 418, '15-16 July 2027', 23, 'Serif', blue)
@@ -87,7 +110,7 @@ def logo(name, x, y, w, h):
                 iw*scale, ih*scale, mask='auto')
 
 logo('swansea.png', 36, 38, 150, 60)
-logo('lms.png', 203, 38, 205, 60)
+logo('HIMR.png', 203, 38, 205, 60)
 logo('ini.png', 440, 38, 110, 60)
 c.showPage()
 c.save()
